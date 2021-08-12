@@ -8,6 +8,12 @@
     - 데이터를 분석하여 데이터 사이에 존재하는 패턴을 예측 가능한 규칙들의 조합으로 나타내는 모델
     - 규칙의 조합을 나타내는 방식이 나무와 같다고 하여 의사결정나무라고 함
     - 순차적으로 질문을 던져서 답을 고르게 하는 방식 ex) 스무고개 놀이
+    - 이진트리만 해당됨, 리프노드 외의 모든 노드는 자식노드를 두개만 가질 수 있다.
+        - ID3 같은 알고리즘은 둘 이상의 자식노드를 갖는 트리를 만들 수 도 있다.
+     - 탐욕적 알고리즘 greedy algorithm : 최적의 해를 구하기 위해 각 단계마다 여러 경우 중하나를 결정해야하는데 이 때마다 최적이라고 생각되는 것을 선택해 나가는 방식을 의미한다. 순간마다(지역적)의 선택은 최적의 선택이지만, 최종적(전역적)인 단계에서 그 해답이 최적이라는 보장은 없다.
+- 의사결정나무는 화이트박스 모델에 속한다. 
+    - 알고리즘의 결과가 직관적이고 이해하기 쉽다.
+    - 블랙박스 모델 : 성능이 뛰어나지만 모델이 왜 그러한 예측을 했는지 쉽게 이해하기 어렵다.
 
 ### committess 와 boosting
 - 분류 classification 과 회귀 regression 문제를 풀기 위하여 다양한 종류의 머신러닝 모델이 있는데 여러 모델을 조합하면 성능이 더 나아질 수 있다.
@@ -129,19 +135,26 @@
     - gridsearchcv
     - pipeline
     
-## DecisionTreeClassifier 속성값들
+## DecisionTreeClassifier 속성값
+- 의사결정나무는 과적합 되기 쉬운 경향이 있으므로 이를 제한하기 위한 규제 매개변수들을 설정할 수 있다.
+- min 으로 시작하는 속성값을 증가시키거나 max 로 시작하는 속성값을 감소시키면 모델에 규제가 커진다.
 ```
 
 DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion='gini', max_depth=None, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=1, min_samples_split=2, min_weight_fraction_leaf=0.0, presort='deprecated', random_state=None, splitter='best')
 
 ```
+- criterion : 의사결정나무가 분류규칙을 정하는 방법
+    - 기본 지니불순도로 설정 : gini
+    - 엔트로피 설정 가능 : entorpy
+- min_samples_split : 분할되기 위해 노드가 가져야 하는 최소 샘플 수
+- min_samples_leaf : 리프 노드가 가지고 있어야 할 최소 샘플 수
+- min_weight_fraction_leaf(min_samples_leaf 와 같지만 가중치가 부여된 전체 샘플 수에서의 비욜)
+- max_leaf_nodes : 리프 노드의 최대 수
+- max_features : 각 노드에서 분할에 사용할 특성의 최대 수
+- min_impurity_decrease : 분할로 얻어질 불순도 감소량 설정
+- min_impurity_split : 분할대상이 되기 위해 최소한의 불순도 설정
 
-- 특히 중요한 속성들
-```
-max_depth, criterion, max_leaf_nodes, random_state
-```
-
-# 1. 그래프
+# 1. 분석과정에서 필요한 그래프
 
 ## 1) boxplot
 ```
