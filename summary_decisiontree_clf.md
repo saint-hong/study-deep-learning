@@ -47,7 +47,7 @@
     - 기본적으로 모든 독립변수와 모든 가능한 기준값에 대해 정보획득량을 구하여 가장 정복획득량이 큰 독립 변수와 기준값을 선택
 - 정보획득량 information gain 
     -  X라는 조건에 의해 확률변수 Y의 엔트로피가 얼마나 감소하였는가를 나타내는 값
-    - $IG[Y, X]=H[Y] - H[Y|X]$
+    - <src img="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20IG%5BY%2C%20X%5D%3DH%5BY%5D%20-%20H%5BY%7CX%5D">
     - Y의 엔트로피에서 X에 대한 Y의 조건부 엔트로피를 뺀 값
     - tree가 자라면서 각 분기점에서 어떤 feature를 선택할지 정할 때 사용된다.
         - A, B, C 각 feature 를 기준으로 정보획득량을 구한뒤 값을 비교 가장 큰 값이 상위의 root node의 특성이된다.
