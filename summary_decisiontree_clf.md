@@ -47,7 +47,7 @@
     - 기본적으로 모든 독립변수와 모든 가능한 기준값에 대해 정보획득량을 구하여 가장 정복획득량이 큰 독립 변수와 기준값을 선택
 - 정보획득량 information gain 
     -  X라는 조건에 의해 확률변수 Y의 엔트로피가 얼마나 감소하였는가를 나타내는 값
-    - <src img="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20IG%5BY%2C%20X%5D%3DH%5BY%5D%20-%20H%5BY%7CX%5D">
+    - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20IG%5BY%2C%20X%5D%3DH%5BY%5D%20-%20H%5BY%7CX%5D"/>
     - Y의 엔트로피에서 X에 대한 Y의 조건부 엔트로피를 뺀 값
     - tree가 자라면서 각 분기점에서 어떤 feature를 선택할지 정할 때 사용된다.
         - A, B, C 각 feature 를 기준으로 정보획득량을 구한뒤 값을 비교 가장 큰 값이 상위의 root node의 특성이된다.
@@ -60,11 +60,11 @@
         - 순도가 높은 데이터는 정보를 많이 가지고 있다는 의미, 즉 예측이 가능하며 새롭게 얻을 정보량이 적다. 엔트로피가 낮은 상태이다.
         - 순도가 낮은 데이터는 정보가 부족하다는 의미, 즉 예측이 불확실하며 새롭게 얻을 정보량이 많다. 엔트로피가 높은 상태이다.
     - 데이터를 구분하기 전 정보획득량
-        - $Entropy(A)=-\sum_{k=1}^{m}{p_klog_2}{(p_k)}$
+        - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20Entropy%28A%29%3D-%5Csum_%7Bk%3D1%7D%5E%7Bm%7D%7Bp_klog_2%7D%7B%28p_k%29%7D"/>
     - 데이터를 구분하고 난 후의 정보획득량
-        - $Entropy(A)=\sum_{i=1}^{d}R_i(-\sum_{k=1}^{m}p_klog2(p_k))$
+        - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20Entropy%28A%29%3D%5Csum_%7Bi%3D1%7D%5E%7Bd%7DR_i%28-%5Csum_%7Bk%3D1%7D%5E%7Bm%7Dp_klog2%28p_k%29%29"/>
 - 지니계수 Gini Index 
-    - $G.I(A) = \sum_{i=1}^{d}(R_i(1-\sum_{k=1}^{m}(p^2_{ik})))$
+    - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20G.I%28A%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bd%7D%28R_i%281-%5Csum_%7Bk%3D1%7D%5E%7Bm%7D%28p%5E2_%7Bik%7D%29%29%29"/>
     - 엔트로피와 유사한 불순도 지표
     - 그래프의 면적이 엔트로피보다 약간 좁다
     - 데이터를 절반으로 나누었을 때 불순도율이 최대
@@ -99,7 +99,7 @@
     - test 데이터를 넣어 성능 검증 후, 가지치기 결정
     - 통계적 중요성 statistical significance 에 기반하여 분할 후 두 지점간의 차이에 따라서 가지치기 결정 (chi-square). information gain 값이 크더라도 chi-square 값이 작으면 분할하지 않는다. 가지를 친다. merge 한다.  
     - 비용함수(cost function)이 최소인 분기지점을 찾도록 학습된다. 
-        - $CC(T) = Err(T) + \alpha + L(T)$ 
+        - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20CC%28T%29%20%3D%20Err%28T%29%20&plus;%20%5Calpha%20&plus;%20L%28T%29"/> 
         - CC(T) : 오류가(Err) 적으면서 분기지점의 수가(L) 적은 단순한 모델일 수록 작은 값
         - Err(T) : 검증데이터에 대한 오분류율
         - L(T) : 분기지점의 수 (구조의 복잡도)
