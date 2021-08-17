@@ -22,7 +22,7 @@
 - 그러나 실제 데이터는 특징 변수 x가 매우 많은 다차원이므로 단순한 방식으로 cost function 의 최소값을 찾기 어렵다.
     - 경사하강 알고리즘 gradient decent algorithm 방식을 사용 
     - 비용 함수의 그래프 위에 임의의 점 선택 -> 해당 점에서 미분 또는 편미분 값을 계산 -> 미분값 즉 기울기가 양수인지 음수인지 판단하여 학습률 Learning Rate 업데이트 -> 새로운 임의의 지점 이동 후 반복
-- '학습률 Learning Rate'
+- `학습률 Learning Rate`
     - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20%5Ctheta%20%3D%20%5Ctheta%20-%20%5Calpha%20%5Cdfrac%7Bd%7D%7Bdt%7D%20J_%7B%5Ctheta%7D%20%28x%29"/>
     - 경사하강 기법에서 임의의 점 선택할 때 다음 지점을 선택하는 기준값
     - 알파를 어떻게 설정하느냐에 따라서 theta 를 갱신하게 된다.
@@ -38,24 +38,24 @@
 ### 비용함수의 종류
 - 머신러닝의 예측값(prediction)과 실제값(label)의 차이를 줄여 실제값에 가까운 예측값을 도출하는 모델을 만들기 위해 필요함. 차이를 조절하는 하는 몇가지 비용함수들
 - 성능 측정 지표
-- 'MAE (Mean Absolute Error) : L1 loss function'
+- `MAE (Mean Absolute Error) : L1 loss function`
     - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20MAE%3D%5Cdfrac%7B1%7D%7Bn%7D%20%5Csum%20%7Cy-%20%5Chat%20y%7C"/>
     - y = 실제값, y^ = 예측값
     - 실제값과 예측값의 차이값의 절대값의 평균
     - 절대값이므로 예측값이 실제값보다 큰지 작은지 판단이 어렵다.
     - 특잇값이 많은 경우에 유용함
     - 에러에 따른  손실이 선형적으로 올라갈 때 적합
-- 'MSE (Mean Squared Error) : L2 loss function'
+- `MSE (Mean Squared Error) : L2 loss function`
     - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20MSE%20%3D%20%5Cdfrac%7B1%7D%7Bn%7D%20%5Csum%20%28y%20-%20%5Chat%20y%29%5E2"/>
     - 예측값과 실제값의 차이의 면적의 합
     - 제곱을 하므로 예측값이 실제값보다 큰지 작은지 판단 어렵다.
     - 항상 양수
     - 오차값의 크기가 클수록 오차의 정도가 커진다. outlier 의 영향을 받는다. 이상치가 존재하면 수치가 많이 늘어난다.
-- 'RMSE (Root Mean Squared Error)'
+- `RMSE (Root Mean Squared Error)`
     - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20RMSE%20%3D%20%5Csqrt%20%7B%5Cdfrac%20%7B%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28y_%7Bi%7D%20-%20%5Chat%20y_%7Bi%7D%29%5E2%7D%7BN%7D%7D"/>
     - 오차에 제곱을 한 MSE 값은 실제 오류 평균보다 커지는 특성이 있으므로, MSE에 루트를 적용
     - 에러에 따른 손실이 기하급수저긍로 올라갈때에 적합
-- 'MSLE (Mean Squared Log Error)'
+- `MSLE (Mean Squared Log Error)`
     - <img src="https://latex.codecogs.com/png.latex?%5Cdpi%7B100%7D%20%5Cfn_cm%20%5Clarge%20MSLE%28y%2C%20%5Chat%20y%29%20%3D%20%5Cdfrac%7B1%7D%7Bn_%7Bsamples%7D%7D%20%5Csum_%7Bi%3D0%7D%5E%7Bn_%7Bsmaples%7D-1%7D%28log_%7Be%7D%281&plus;y_%7Bi%7D%29%20-%20log_%7Be%7D%281&plus;%5Chat%20y_%7Bi%7D%29%29%5E2"/>
     - MSE 에 로그를 적용
     - 실제값과 예측값에 자연로그를 취한 형태
