@@ -3,7 +3,7 @@ Description and Summary of the use of the Machine-Learning
 
 
 ### 전처리
-- 간략한 설명, 여러가지 종류 위주로 정리, pca 는 자세하게
+> 간략한 설명, 여러가지 종류 위주로 정리, pca 는 자세하게
 - Scaler : 수치형 데이터의 차이를 맞춰주는 작업
     - MinMaxScaler, StandardScaler, LogScaler 등
 - PCA : principle component analysis : 차원축소 (중요)
