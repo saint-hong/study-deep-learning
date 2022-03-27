@@ -111,6 +111,9 @@ array([ 0, 16,  5, 52,  9,  8, 28,...])
 image = mh.imread(imges[sim_img_position])
 ```
 
+## 전체 프로세스
+
+
 ![sim_img_process.png](./images/sim_img_process.png)
 
 
