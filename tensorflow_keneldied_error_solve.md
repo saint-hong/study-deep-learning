@@ -85,7 +85,7 @@ conda create -n new_env python=3.7
 ```
 conda info --envs
 ```
-![tf_kernel_error_2.png](./images/tf_kernel_eror_2.png)
+![tf_kernel_error_2.png](./images/tf_kernel_error_2.png)
 
 #### 3. 가상환경 활성화 및 비활성화
 - 가상환경을 활성화하고 가상환경 리스트를 확이하면 활성화 된 가상환경에 `*`가 뜬다.
