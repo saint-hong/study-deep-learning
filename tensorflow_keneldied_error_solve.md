@@ -88,8 +88,8 @@ conda info --envs
 ![tf_kernel_error_2.png](./images/tf_kernel_error_2.png)
 
 #### 3. 가상환경 활성화 및 비활성화
-- 가상환경을 활성화하고 가상환경 리스트를 확이하면 활성화 된 가상환경에 `*`가 뜬다.
-- 또는 입력셀의 제일 앞부분에 ()안데 현재 활성화된 가상환경이 뜬다.
+- 가상환경을 활성화하고 가상환경 리스트를 확인하면 활성화 된 가상환경에 `*`가 뜬다.
+- 또는 입력셀의 제일 앞부분에 ()안에 현재 활성화된 가상환경이 뜬다.
 
 ```
 활성화 : conda activate new_env
@@ -105,13 +105,14 @@ pip install jupyter notebook
 
 #### 5. 가상환경과 커널을 연결하고 쥬피터 노트북 실행시 커널 표시
 - 주피터 노트북이 실행되는 커널의 이름을 설정해준다. 
-   - 설정하지 않아도 된다.
+   - 설정하지 않으면 가상환경의 이름이 그대로 뜬다.
 - 주피터 노트북을 실행한 후 새로운 파일을 생성할 때 가상환경의 이름이 나오는 것을 알게 되었다.
-- anaconda prompt에서 jupyter notebook 실행해도 실행 된다.
 
 ```
 python -m ipykernel install --user --name new_env --display-name "ml_env"
 ```
+
+- 주피터 노트북을 실행할 때 anaconda prompt에서 jupyter notebook 실행해도 실행 된다.
 
 #### 6. 주피터 노트북에서 가상환경 확인, 선택
 - new 버튼을 누르면 새로 만든 가상환경과 kernerl 명이 보인다.
@@ -120,15 +121,17 @@ python -m ipykernel install --user --name new_env --display-name "ml_env"
 
 ![tf_kernel_error_3.png](./images/tf_kernel_error_3.png)
 
-#### 7. 커널 연결 해제
+#### 7. 커널 연결 해제 (error 해결과 상관없음)
 - 주피터 노트북과 가상환경을 연결 해제한다.
 
 ```
 jupyter kernelspec uninstall new_env
 ```
+
 #### 8. new_env에 autopep8 설치
 - 새로운 가상환경 new_env에서 주피터 노트북을 실행하면 autopep8을 설치하라는 메시지가 뜬다.
-
+- autopep8 설치
+- 
 ```
 conda install -c conda-forge autopep8
 ```
