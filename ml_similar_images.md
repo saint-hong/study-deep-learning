@@ -1,17 +1,74 @@
 # similar images 
 
+
+
 ## 이미지 변환
+
 ### 1. 이미지를 벡터화
 - img는 이미지의 경로 (이미지파일의 형식까지 포함)
 
 ```python
 im = mh.imread(img)
 ```
+- 벡터화한 이미지 한 개는 어떻게 생겼을까?
+
+```python
+mh.imread(images[0])
+
+>>>
+
+array([[[106, 126, 135],
+        [104, 124, 133],
+        [107, 127, 136],
+        ...,
+        [ 70, 143, 198],
+        [ 71, 144, 199],
+        [ 70, 143, 198]],
+
+       [[108, 128, 137],
+        [109, 129, 138],
+        [104, 124, 133],
+        ...,
+```
+
+- 벡터화한 이미지 한개의 크기는 이렇다.
+- 3차원으로 되어 있는 이유는 rgb 이미지 이기때문이다. (red, green blue)
+
+```python
+mh.imread(images[0]).shape
+
+>>>
+
+(1944, 2592, 3)
+```
 
 ### 2. 벡터화환 이미지를 gray로 변환
+- mh.imread()로 이미지를 벡터화 했다. 
+- 이미지 벡터를 gray 컬러로 변환해준다.
 
 ```python
 im = mh.color.rgb2gray(img,dtype=np.uint8)
+im
+
+>>>
+
+array([[120, 118, 121, ..., 127, 128, 127],
+       [122, 123, 118, ..., 122, 124, 126],
+       [130, 131, 116, ..., 122, 125, 129],
+       ...,
+       [186, 186, 186, ...,  65,  56,  50],
+       [185, 186, 186, ...,  63,  63,  68],
+       [185, 186, 187, ...,  64,  69,  67]], dtype=uint8)
+```
+
+- 회색컬러로 변환한 이미지 벡터는 rgb 차원이 없어지고 2차원 행렬의 형태가 된다.
+
+```python
+im.shape
+
+>>>
+
+(1944, 2592)
 ```
 
 ### 3. gray로 변환한 이미지를 haralick 알고리즘으로 변환 후 features에 저장
@@ -21,6 +78,16 @@ im = mh.color.rgb2gray(img,dtype=np.uint8)
 features.append(mh.features.haralick(im).ravel())
 ```
 
+- 회색으로 변환한 이미지 벡터를 haralick 알고리즘으로 다시 변환하면 모양이 바뀐다.
+    - 1944x2592 행렬이 4x13 행렬로 변환된다.
+```python
+mh.features.haralick(im).shape
+
+>>>
+
+(4, 13)
+```
+
 ### 4. 최종 이미지 벡터를 np.array()로 변환
 
 ```python
@@ -28,11 +95,39 @@ np.array(features)
 ```
 	
 ## 라벨 데이터
-### 1. 이미지의 파일명에서 라벨이 될 수 있는 부분만 labels에 따로 저장
-- 또는 다른 방법으로 라벨 저장
+
+### 1. 이미지 파일의 경로 검색
+
+#### glob 패키지로 파일 경로 검색
+- glob 패키지는 `*.jpg` 등 검색 명령어를 사용할 수 있다.
+    - jpg 파일만 검색하기
+- images에 파일경로 저장
 
 ```python
-labels.append(이미지경로[라벨이름 시작:-len("제외할부분")])
+images = glob("../../04_machine_learning/SimpleImageDataset/SimpleImageDataset/*.jpg")
+images
+
+>>>
+
+['../../04_machine_learning/SimpleImageDataset/SimpleImageDataset\\building00.jpg',
+ '../../04_machine_learning/SimpleImageDataset/SimpleImageDataset\\building01.jpg',
+ '../../04_machine_learning/SimpleImageDataset/SimpleImageDataset\\building02.jpg',
+ '../../04_machine_learning/SimpleImageDataset/SimpleImageDataset\\building03.jpg',
+ '../../04_machine_learning/SimpleImageDataset/SimpleImageDataset\\building04.jpg',
+ '../../04_machine_learning/SimpleImageDataset/SimpleImageDataset\\building05.jpg', ...]
+```
+
+#### 파일 경로에서 라벨부분만 선택하기
+- 파일명에서 이미지의 마지막에 붙어있는 넘버와 jpg 를 제외하는 인덱스
+- 라벨 부분만 떼어내서 labels에 저장한다.
+
+```python
+labels = images[0][64:-len("00.jpg")]
+labels 
+
+>>>
+
+'building'
 ```
 
 ### 2. 최종 라벨을 np.array()로 변환
@@ -56,14 +151,22 @@ clf = Pipeline([("proproc", StandardScaler()), ("classifier", LogisticRegression
 ```
 
 ### 2. 예측 정확도 확인
+- cross_val_score에 파이프라인 객체와 haralick으로 변환한 이미지 객체, 라벨데이터를 넣는다.
+    - 5번의 교차검증 결과가 반환된다. 
 
 ```python
 from sklearn.model_selection import cross_val_score
 
 scores = cross_val_score(clf, features, labels)
+scores 
+
+>>>
+
+array([0.88888889, 0.72222222, 0.94444444, 0.83333333, 0.94444444])
 ```
 
 ## 이미지 벡터간 거리를 계산하여 유사한 이미지 찾기
+
 ### 1. 이미지 벡터를 스케일러를 사용하여 스케일링
 - features는 list안에 이미지의 벡터가 각각 numpy.ndarray로 저장 되어 있다.
 
@@ -82,10 +185,16 @@ from scipy.spatial import distance
 
 distance의 squareform 서브패키지 사용
 dists = distance.squareform(distance.pdist(features))
+dists.shape
+
+>>>
+
+(90, 90)
 ```
 
 ### 3. dists에서 가장 유사한 이미지 선택
 - n번째 이미지와 거리값이 작은 이미지가 유사한 이미지이다.
+    - m을 0, 1, 2, 3... 으로 하면, 가장 유사한 이미지의 벡터를 차례대로 선택할 수 있다.
 
 ```python
 sim_img_position = dists[n].argsort()[m]
@@ -286,11 +395,4 @@ plotImages(70)
 - 이러한 문제는 머신러닝 모델이 이미지를 분석 할 때 분석의 영역에 문제가 있기 때문이다.
 - 분석가가 이미지에서 분석해주기를 바라는 영역과 머신러닝이 분석한 영역에서 차이가 나기 때문이다.
 - **이러한 문제를 해결하여 모델의 성능을 높이기 위해서는 모델을 검증하고 데이터를 면밀하게 검토해야한다.**
-
-
-
-
-
-
-
 
