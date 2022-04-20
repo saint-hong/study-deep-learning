@@ -85,11 +85,11 @@
 - **스텝사이즈(learning rate, step size)** : 현재 지점에서 기울기가 낮아지는 다음 지점으로 나아갈 때 (새로운 weight 값을 찾을때) 사용되는 다음 지점까지의 거리. 스텝사이즈값에 따라서 최적화 값이 달라진다.
 
 ### GD와 SGD
-- GD (Gradient Descent)
+- `GD (Gradient Descent)`
     - full-batch : 학습데이터를 전부 다 읽고 최적의 1스텝을 나간다.
     - 결과적으로 최적화가 잘 된다.
     - 그러나 모든 것을 계산한 후에 최적의 스텝을 가기때문에 너무 느리다. 
-- SGD (Stochastic Gradient Descent)
+- `SGD (Stochastic Gradient Descent)`
     - mini-batch : 학습데이터를 작은 토막단위로 읽고 여러스텝을 나간다.
     - 단계마다 최적화가 부정확하지만 결과적으로 최적화가 잘 된다.
     - 데이터의 일부분만 검토한 한 스텝을 나가기때문에 시간이 적게 걸린다.
@@ -103,14 +103,14 @@
     - GD를 개선한 것이 SGD
     - 이후 SGD의 장단점을 개선한 여러가지 optimizer들이 있다.
 - 스텝방향을 개선한 것들
-    - Momentum : 스텝계산해서 움직인 후, 내려오던 관성 방향을 다시 가는 방식
-    - NAG (Nesterov Accelerated Gradient) : 일단 관성 방향으로 먼저 움직이고, 움직인 자리에 스텝을 계산해서 속도를 개선하는 방식
-    - Adam (RMSProp + Momentum) : 방향과 스텝사이즈를 적당하게 조정하는 방식
-    - Nadam (Adam + NAG) : 
+    - **Momentum** : 스텝계산해서 움직인 후, 내려오던 관성 방향을 다시 가는 방식
+    - **NAG** (Nesterov Accelerated Gradient) : 일단 관성 방향으로 먼저 움직이고, 움직인 자리에 스텝을 계산해서 속도를 개선하는 방식
+    - **Adam** (RMSProp + Momentum) : 방향과 스텝사이즈를 적당하게 조정하는 방식
+    - **Nadam** (Adam + NAG) : 
 - 스텝사이즈를 개선한 것들
-    - Adagrad : 안가본 곳은 큰 스텝사이즈로 가면서 적당히 탐색하고, 많이 가본곳은 작은 스텝사이즈로 세밀히 탐색하는 방식
-    - AdaDelta : 스텝사이즈가 작아져서 더딘것을 개선한 방식
-    - RMSProp : 스텝사이즈를 줄이면서 나아가는데 이전의 맥락을 파악하면서 나아가는 방식
+    - **Adagrad** : 안가본 곳은 큰 스텝사이즈로 가면서 적당히 탐색하고, 많이 가본곳은 작은 스텝사이즈로 세밀히 탐색하는 방식
+    - **AdaDelta** : 스텝사이즈가 작아져서 더딘것을 개선한 방식
+    - **RMSProp** : 스텝사이즈를 줄이면서 나아가는데 이전의 맥락을 파악하면서 나아가는 방식
 - **일반적으로 Adam을 사용하고, 성능을 개선하기 위해 다른 optimizer들을 실험한다.**
 
 
@@ -436,7 +436,7 @@ ax.view_init(10, 15)
 plt.show() ;
 ```
 
-![tf_basic_5.png](./images/tensorflow/tf_basic_5.png)
+![tf_basic_5.png](../images/tensorflow/tf_basic_5.png)
 
 
 ## 선형회귀와 XOR 문제
@@ -627,7 +627,7 @@ plt.ylabel("loss")
 plt.show() ;
 ```
 
-![tf_basic_10.png](../images/tensroflow/tf_basic_10.png)
+![tf_basic_10.png](../images/tensorflow/tf_basic_10.png)
 
 
 ### 학습에서 찾은 가중치
