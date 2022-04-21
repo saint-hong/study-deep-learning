@@ -786,7 +786,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y_onehot,
 ```
 
 ### 딥러닝 모델 생성
-- 활성함수로 relu 함수를 설정
+- 4개의 layer 생성
+    - layer 당 32개의 뉴런 생성
+    - 마지막 layer는 3개의 뉴런 생성
+- 뉴런의 활성함수로 relu 함수를 설정
     - back propagation의 vanishing gradient 영향을 최소화 해준다.
     - 계산이 반복될 수록 처음의 계산값에서 멀어지는 현상
 - 마지막 layer의 할성함수는 softmax 함수를 설정
@@ -800,6 +803,8 @@ model_ir = tf.keras.models.Sequential([
     tf.keras.layers.Dense(3, activation='softmax')
 ])
 ```
+
+![tf_img_12.png](../images/tensorflow/tf_img_12.png)
 
 ### 모델 컴파일
 - optimizer 인수를 Adam 방법으로 설정
