@@ -21,16 +21,31 @@
 - **망(net)** : 여러개의 레이어들이 모여있는 것
 - **deep learning** : 신경망이 깊어지면, 많아지면 깊은 신경망이 된다.
 
+![tf_img_3.png](../images/tensorflow/tf_img_3.png)
+
+#### 뉴런의 구조 
+
+![tf_img_1.png](../images/tensorflow/tf_img_1.png)
+
+#### 레이어와 망의 구조
+
+![tf_img_2.png](../images/tensorflow/tf_img_2.png)
+
+
 ### 뉴럴넷의 학습 방법 : back propagation
 - 뉴럴넷에서 사용하는 학습 방법
     - **역전파** : 뒤로 전달한다는 의미
 - 현재 지점에서 오차의 정도를 미분한 값을 이전 단계로 전달하며 업데이트 한다.
     - 미분하고 곱하고 더한값을 역방향으로 반복하며 업데이트
     
+![tf_img_4.png](../images/tensorflow/tf_img_4.png)
+
 ### Vanishing gradient 현상
 - 뉴럴넷의 이러한 학습방법에서 sigmoid 함수를 사용할 경우 업데이트 값이 점차 사라져가는 경향이 나타난다.
     - **underfitting : fitting이 잘 안되는 현상**
 - 왜냐하면 시그모이드 함수의 특성상 가운데의 꺾이는 부분을 제외하면 양쪽 끝은 기울기가 0이기 때문이다.
+
+![tf_img_5.png](../images/tensorflow/tf_img_5.png)
 
 ### 뉴럴넷에서 답을 회신받는 방법
 - activation 함수
@@ -44,7 +59,12 @@
     - 양수값에서 기울기가 1로 유지 된다. (미분값이 있다. vanishing 현상이 줄어든다.)
     - 시그모이드 함수에서는 가운데 구간을 제외한 모든 구간에서 기울기가 0이다.
 
-### loss
+![tf_img_6.png](../images/tensorflow/tf_img_6.png)
+
+
+## model compiled
+
+### loss 함수
 - 딥러닝 모델의 학습을 위해서 **loss(cost) 함수**를 설정해야 한다. 
     - 비용함수
 - loss 함수는 정답까지 얼마나 멀리 있는지를 측정해준다.
@@ -52,11 +72,7 @@
 - **mse** : mean square error 오차 제곱의 평균 사용
 - **optimizer** : loss를 어떻게 줄여줄 것인지 방법을 선택
 
-### optimizer
-- loss함수를 최소화하는 가중치를 찾아가는 과정에 대한 알고리즘이다.
-- **rmsprop**를 사용
-
-## model compiled
+![tf_img_7.png](../images/tensorflow/tf_img_7.png)
 
 ### Gradient Decent
 - 기존 뉴럴넷이 가중치를 최적화하는 방법
@@ -85,7 +101,12 @@
     - 단계마다 최적화가 부정확하지만 결과적으로 최적화가 잘 된다.
     - 데이터의 일부분만 검토한 한 스텝을 나가기때문에 시간이 적게 걸린다.
 
+![tf_img_8.png](../images/tensorflow/tf_img_8.png)
+
+![tf_img_9.png](../images/tensorflow/tf_img_9.png)
+
 ### Optimize
+- loss 함수를 최소화하는 가중치를 찾아가는 과정에 대한 알고리즘
 - "산을 잘 타고 내려오는 과정" : 오차 함수의 최저값을 찾는 과정, 즉 오차의 정도가 가장 낮은 지점을 찾는 것과 같다.
     - 어느 방향으로 갈 것인가?
     - 어느정도의 보폭으로 나갈 것인가?
@@ -104,8 +125,11 @@
     - **RMSProp** : 스텝사이즈를 줄이면서 나아가는데 이전의 맥락을 파악하면서 나아가는 방식
 - **일반적으로 Adam을 사용하고, 성능을 개선하기 위해 다른 optimizer들을 실험한다.**
 
+![tf_img_10.png](../images/tensorflow/tf_img_10.png)
 
-## tensorflow로 딥러닝 모델 만들기
+![tf_img_11.png](../images/tensorflow/tf_img_11.png)
+
+## tensorflow로 딥러닝 선형회귀 모델 만들기
 - 텐서플로우를 사용하여 나이와 몸무게를 입력하면 혈중지방 수치를 예측해주는 딥러닝 모델 생성
 - Age, weight 값을 입력하면 blood fat을 예측해주는 모델
     - 입력값 : X = (x1 = Age, x2 = weight), x1과 x2는 벡터
@@ -828,3 +852,79 @@ plt.show() ;
 
 ![tf_basic_13.png](../images/tensorflow/tf_basic_13.png)
 
+
+## tensorflow 딥러닝 모델 생성 요약
+
+### 모델생성
+- 망(net) 구성하기
+    - 최초 layer에는 input_shape 설정
+    - activation 설정 : 활성화함수 (relu, sigmoid 등)
+
+```python
+model_ir = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(32, activation='relu', input_shape=(4,)),
+    tf.keras.layers.Dense(32, activation='relu'),
+    tf.keras.layers.Dense(32, activation='relu'),
+    tf.keras.layers.Dense(3, activation='softmax')
+])
+```
+
+### 모델컴파일
+- optimizer 설정 : loss를 최소화 하기 위한 최적화 방법
+- loss 함수 설정 : 실제값과 예측값의 차이를 구하는 함수
+- metrics 설정 : 성능 평가 함수
+
+```python
+model_ir.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['accuracy'])
+```
+
+### 모델요약
+- 망을 구축하고, 컴파일을 설정한 내용을 요약해서 보여준다.
+
+```python
+model_ir.summary()
+```
+
+### 모델학습
+- 학습데이터와 학습용 라벨데이터를 입력한다.
+- epochs 설정 : 학습의 횟수
+
+```python
+hist = model_ir.fit(X_train, y_train, epochs=100)
+```
+
+### loss확인
+- hist.history["loss"] : loss 값이 저장되어 있다.
+- hist.history["accuracy"] : accuracy 값이 저장되어 있다.
+
+```python
+plt.figure(figsize=(8, 6))
+plt.plot(hist.history["loss"], label="loss")
+plt.plot(hist.history["accuracy"], label="acc")
+plt.title("model loss & acc")
+plt.xlabel("epochs")
+plt.ylabel("loss")
+plt.legend()
+plt.show() ;
+```
+
+### 성능확인
+- 테스트 데이터에 대한 accuracy 확인
+
+```python
+model_ir.evaluate(X_test, y_test, verbose=2)
+```
+
+- 모델에서 만든 가중치벡터와 bias벡터 확인
+
+```python
+W_, b_ = model.get_weights()
+```
+
+### 모델예측
+- 가중치벡터와 bias벡터를 최적화한 모델에 새로운 데이터를 입력하여 결과값을 예측
+- 객체를 생성할 때 설정한 input_shape와 같은 형태의 데이터를 입력한다.
+
+```python
+model.predict()
+```
