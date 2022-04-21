@@ -1,7 +1,7 @@
 # TensorFlow
 
-## 간략한 요약
-- 용어의미
+## 텐서플로우란?
+- tensorflow
     - tensor : 다차원의 벡터나 행렬
     - Graph : 텐서가 흐르는 경로 (혹은 공간)
     - **tensor flow : 텐서가 graph를 통해서 흐른다.**
@@ -10,9 +10,9 @@
 - 최신버전 2.8.0
 - 고수준 API인 keras가 병합되어있다.
 
-#### 딥러닝 기초
+## 딥러닝의 구조
 - Deep Learning and Keras
-- 신경망에서 아이디어를 얻어서 시작된 Neural Net
+- 신경망에서 아이디어를 얻어서 시작된 **Neural Net**
 - **뉴런** : 신경망의 최소단위 
     - 뉴런은 입력(input), 가중치(weights), 활성화함수(activation function), 출력(activation)으로 구성되어 있다.
     - 뉴런에서 학습할 때 변하는 것은 가중치이다.
@@ -21,18 +21,9 @@
 - **망(net)** : 여러개의 레이어들이 모여있는 것
 - **deep learning** : 신경망이 깊어지면, 많아지면 깊은 신경망이 된다.
 
-## 딥러닝 모델의 구조
-- 4개의 layer : 각 layer의 끝단에는 **activation** 함수가 붙어있다.
-- 처음 3개의 layer에서는 각각 32개의 뉴런 생성
-    - (1x4) x (4x32) = (1x32) x (32x32) = (1x32) x (32x32) = (1x32)
-    - 활성함수 activation : relu 함수
-- 마지막 layer에서는 3개의 뉴런 생성
-    - (1x32) x (32x3) = (1x3)
-    - 활성함수 activation : softmax 함수
-
 ### 뉴럴넷의 학습 방법 : back propagation
 - 뉴럴넷에서 사용하는 학습 방법
-    - 역전파 : 뒤로 전달한다는 의미
+    - **역전파** : 뒤로 전달한다는 의미
 - 현재 지점에서 오차의 정도를 미분한 값을 이전 단계로 전달하며 업데이트 한다.
     - 미분하고 곱하고 더한값을 역방향으로 반복하며 업데이트
     
@@ -65,7 +56,7 @@
 - loss함수를 최소화하는 가중치를 찾아가는 과정에 대한 알고리즘이다.
 - **rmsprop**를 사용
 
-## model compiled - optimizer
+## model compiled
 
 ### Gradient Decent
 - 기존 뉴럴넷이 가중치를 최적화하는 방법
@@ -77,7 +68,7 @@
     - - : decent, 에러를 낮추는 방향
     - \gamma : learning rate : 한발자국의 크기
     - \triangledown F(a^{n}) : gradient : 현재 지점의 기울기
-- loss function : 뉴럴넷의 예측과정에서 오차가 발생한다. 이 오차의 정도를 말한다. 
+- **loss function** : 뉴럴넷의 예측과정에서 오차가 발생한다. 이 오차의 정도를 말한다. 
 - 현재 weight 세팅에서 데이터를 입력하면 전체 에러(오차)가 계산된다.
     - 라벨과 예측값과의 차이
 - 즉 현재 지점(어떤 weight 값이 셋팅된 지점)에서의 loss function의 기울기를 구하고 이 기울기가 현재보다 낮아지는 방향으로 weight 값을 다시 셋팅한다.
@@ -99,7 +90,7 @@
     - 어느 방향으로 갈 것인가?
     - 어느정도의 보폭으로 나갈 것인가?
     - 이 두가지를 잘 선택해야 빠르게 산을 내려올 수 있다. 
-- 여러가지 Optimizer
+#### 여러가지 Optimizer
     - GD를 개선한 것이 SGD
     - 이후 SGD의 장단점을 개선한 여러가지 optimizer들이 있다.
 - 스텝방향을 개선한 것들
@@ -662,8 +653,17 @@ array([[-2.8219044],
 <tf.Variable 'dense_3/bias:0' shape=(1,) dtype=float32, numpy=array([0.8260915], dtype=float32)>
 ```
 
-## 딥러닝 모델로 분류문제 풀어보기
-- 붓꽃데이터의 품종 분류
+## 딥러닝으로 분류 모델 만들기
+- 붓꽃데이터의 품종을 분류하는 딥러닝 모델 만들기
+- 4개의 layer 생성하고 각 layer 마다 활성함수 설정
+    
+- 처음 3개의 layer에서는 각각 32개의 뉴런 생성
+    - (1x4) x (4x32) = (1x32) x (32x32) = (1x32) x (32x32) = (1x32)
+    - 활성함수 activation : relu 함수
+- 마지막 layer에서는 3개의 뉴런 생성
+    - (1x32) x (32x3) = (1x3)
+    - 활성함수 activation : softmax 함수
+
 
 ```python
 from sklearn.datasets import load_iris
