@@ -508,6 +508,9 @@ model = tf.keras.Sequential([
 ])
 ```
 
+- 모델의 구조
+![tf_basic_5_1.png](../images/tensorflow/tf_basic_5_1.png)
+
 ### 모델 컴파일
 - optimizer : SGD (stochastic graident descent), loss함수의 값을 줄여주기 위한 최적화 방법
     - lr : 학습률
