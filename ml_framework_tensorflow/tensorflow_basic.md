@@ -80,7 +80,7 @@
 
 ### 가중치를 찾는 과정
 - 최적의 weight를 찾아가는 과정
-    - $- \gamma \triangledown F(a^{n})$
+    - <img src="https://latex.codecogs.com/gif.latex?-%20%5Cgamma%20%5Ctriangledown%20F%28a%5E%7Bn%7D%29">
     - - : decent, 에러를 낮추는 방향
     - \gamma : learning rate : 한발자국의 크기
     - \triangledown F(a^{n}) : gradient : 현재 지점의 기울기
@@ -136,7 +136,7 @@
     - 가중치 : W = (w1, w2), 벡터
     - 이상치 : b (bias)
     - 출력값 : y
-    - $y = XW + b$
+    - <img src="https://latex.codecogs.com/gif.latex?y%20%3D%20XW%20&plus;%20b">
 - 데이터에서 입출력 값을 계산하여 W와 b를 얻는다.
 - 모델을 학습시킨 후 예측값 반환한다.
 
@@ -468,20 +468,7 @@ plt.show() ;
 ### XOR 데이터 생성
 - 첫 번째 layers : input 데이터와 가중치 벡터, bias 벡터가 가중합이 된다.
 
-$\begin{bmatrix}
-x_1 & x_2 
-\end{bmatrix} \cdot
-\begin{bmatrix}
-w_{11} & w_{12} \\
-w_{21} & w_{22} \\
-\end{bmatrix} +
-\begin{bmatrix}
-b_1 \\
-b_2 \\
-\end{bmatrix} = 
-\begin{bmatrix}
-x_1w_{11} + x_2 w_{21} + b_1 & x_1 w_{12} + x_2 w_{22} + b_2 \\ 
-\end{bmatrix}$
+<img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D%20x_1%20%26%20x_2%20%5Cend%7Bbmatrix%7D%20%5Ccdot%20%5Cbegin%7Bbmatrix%7D%20w_%7B11%7D%20%26%20w_%7B12%7D%20%5C%5C%20w_%7B21%7D%20%26%20w_%7B22%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D%20&plus;%20%5Cbegin%7Bbmatrix%7D%20b_1%20%5C%5C%20b_2%20%5C%5C%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20x_1w_%7B11%7D%20&plus;%20x_2%20w_%7B21%7D%20&plus;%20b_1%20%26%20x_1%20w_%7B12%7D%20&plus;%20x_2%20w_%7B22%7D%20&plus;%20b_2%20%5C%5C%20%5Cend%7Bbmatrix%7D">
 
 ```python
 X = np.array([
@@ -688,11 +675,13 @@ array([[-2.8219044],
     
 - 처음 3개의 layer에서는 각각 32개의 뉴런 생성
     - (1x4) x (4x32) = (1x32) x (32x32) = (1x32) x (32x32) = (1x32)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbegin%7Bbmatrix%7D%20x_1%20%26%20x_2%20%26%20x_3%20%26%20x_4%20%5Cend%7Bbmatrix%7D%20%5Ccdot%20%5Cbegin%7Bbmatrix%7D%20w_%7B1%2C1%7D%20%26%20%5Ccdots%20%26%20w_%7B1%2C32%7D%20%5C%5C%20w_%7B2%2C1%7D%20%26%20%5Ccdots%20%26%20w_%7B2%2C32%7D%20%5C%5C%20w_%7B3%2C1%7D%20%26%20%5Ccdots%20%26%20w_%7B3%2C32%7D%20%5C%5C%20w_%7B4%2C1%7D%20%26%20%5Ccdots%20%26%20w_%7B4%2C32%7D%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20x_1%20%26%20%5Ccdots%20%26%20x_%7B32%7D%20%5Cend%7Bbmatrix%7D">
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbegin%7Bbmatrix%7D%20x_1%20%26%20%5Ccdots%20%26%20x_%7B32%7D%20%5Cend%7Bbmatrix%7D%20%5Ccdot%20%5Cbegin%7Bbmatrix%7D%20w_%7B1%2C1%7D%20%26%20%5Ccdots%20%26%20w_%7B1%2C%2032%7D%20%5C%5C%20%5Cvdots%20%26%20%5Cddots%20%26%20%5Cvdots%20%5C%5C%20w_%7B32%2C1%7D%20%26%20%5Ccdots%20%26%20w_%7B32%2C%2032%7D%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20x_1%20%26%20%5Ccdots%20%26%20x_%7B32%7D%20%5Cend%7Bbmatrix%7D">
     - 활성함수 activation : relu 함수
 - 마지막 layer에서는 3개의 뉴런 생성
     - (1x32) x (32x3) = (1x3)
+    - <img src="https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbegin%7Bbmatrix%7D%20x_1%20%26%20%5Ccdots%20%26%20x_%7B32%7D%20%5Cend%7Bbmatrix%7D%20%5Ccdot%20%5Cbegin%7Bbmatrix%7D%20w_%7B1%2C1%7D%20%26%20w_%7B1%2C2%7D%20%26%20w_%7B1%2C%203%7D%20%5C%5C%20%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cvdots%20%5C%5C%20w_%7B32%2C1%7D%20%26%20w_%7B32%2C2%7D%20%26%20w_%7B3%2C%203%7D%20%5Cend%7Bbmatrix%7D%20%3D%20%5Cbegin%7Bbmatrix%7D%20x_1%20%26%20x_2%20%26%20x_3%20%5Cend%7Bbmatrix%7D">
     - 활성함수 activation : softmax 함수
-
 
 ```python
 from sklearn.datasets import load_iris
