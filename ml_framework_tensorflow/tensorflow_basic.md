@@ -509,9 +509,9 @@ model = tf.keras.Sequential([
 ```
 
 ### 모델 컴파일
-- optimizer : SGD (stochastic graident descent), loss를 줄여주기 위한 최적화 방법
+- optimizer : SGD (stochastic graident descent), loss함수의 값을 줄여주기 위한 최적화 방법
     - lr : 학습률
-- loss : mse (mean squared error)        
+- loss : mse (mean squared error), loss의 크기를 계산하는 함수        
 
 ```python
 model.compile(optimizer=tf.keras.optimizers.SGD(lr=0.1), loss='mse')
@@ -647,14 +647,16 @@ plt.show() ;
 
 ### 학습에서 찾은 가중치
 - 딥러닝 모델을 만들때 layer를 2개 만들었다.
-- 첫번째 가중합에서 적용 된 가중치
+    - layers 1 : Dense 2 : 가중합의 결과인 예측값 2개 생성
+    - layers 2 : Dense 1 : 가중합의 결과인 예측값 1개 생성
+- 첫번째 레이어에서 찾은 가중치
     - w11, w12, w21, w22 : [ 2.2322593,  4.0225554], [-1.963425 , -4.3580823]
-- dense_2 에서 찾은 가중치 (가중합의 값)
-    - w1, w2 : [ 0.6722828, -2.780185 ]
-- 두번째 가중합에서 적용 된 가중치
+- 첫번쨰 레이어에서 찾은 bias
+    - b1, b2 : [ 0.6722828, -2.780185 ]
+- 두번째 레이어에서 찾은 가중치
     - w1, w2 : [-2.8219044], [ 4.2885075]
-- dense_3 에서 찾은 가중치 (가중합의 값)
-    - w : [0.8260915]
+- 두번째 레이어에서 찾은 bias
+    - b : [0.8260915]
 
 ```python
 for w in model.weights :
