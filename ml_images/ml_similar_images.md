@@ -224,7 +224,7 @@ image = mh.imread(imges[sim_img_position])
 
 ### 1. 도식화
 
-![sim_img_process.png](./images/sim_img_process.png)
+![sim_img_process.png](../images/sim_img_process.png)
 
 
 ### 2. 코드
@@ -377,7 +377,7 @@ def plotImages(n) :
 plotImages(10)
 ```
 
-![sim_img_2.png](./images/sim_img_2.png)
+![sim_img_2.png](../images/sim_img_2.png)
 
 
 - images 리스트에서 70번쨰 이미지와 유사한 이미지 반환
@@ -386,7 +386,7 @@ plotImages(10)
 plotImages(70)
 ```
 
-![sim_img_3.png](./images/sim_img_3.png)
+![sim_img_3.png](../images/sim_img_3.png)
 
 
 ## 모델 검증과 성능평가
