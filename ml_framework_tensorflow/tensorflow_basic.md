@@ -507,8 +507,8 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(1, activation='sigmoid')
 ])
 ```
+#### 모델의 구조
 
-- 모델의 구조
 ![tf_basic_5_1.png](../images/tensorflow/tf_basic_5_1.png)
 
 ### 모델 컴파일
