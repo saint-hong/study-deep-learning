@@ -576,3 +576,5 @@ lstm_sentiment_pred(c)
 
 ![lstm_19.png](../images/rnn/lstm_19.png)
 
+### 참고
+- https://www.youtube.com/watch?v=bX6GLbpw-A4&t=2s
