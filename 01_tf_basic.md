@@ -21,15 +21,15 @@
 - **망(net)** : 여러개의 레이어들이 모여있는 것
 - **deep learning** : 신경망이 깊어지면, 많아지면 깊은 신경망이 된다.
 
-![tf_img_3.png](../images/tensorflow/tf_img_3.png)
+![tf_img_3.png](./images/tensorflow/tf_img_3.png)
 
 #### 뉴런의 구조 
 
-![tf_img_1.png](../images/tensorflow/tf_img_1.png)
+![tf_img_1.png](./images/tensorflow/tf_img_1.png)
 
 #### 레이어와 망의 구조
 
-![tf_img_2.png](../images/tensorflow/tf_img_2.png)
+![tf_img_2.png](./images/tensorflow/tf_img_2.png)
 
 
 ### 뉴럴넷의 학습 방법 : back propagation
@@ -38,14 +38,14 @@
 - 현재 지점에서 오차의 정도를 미분한 값을 이전 단계로 전달하며 업데이트 한다.
     - 미분하고 곱하고 더한값을 역방향으로 반복하며 업데이트
     
-![tf_img_4.png](../images/tensorflow/tf_img_4.png)
+![tf_img_4.png](./images/tensorflow/tf_img_4.png)
 
 ### Vanishing gradient 현상
 - 뉴럴넷의 이러한 학습방법에서 sigmoid 함수를 사용할 경우 업데이트 값이 점차 사라져가는 경향이 나타난다.
     - **underfitting : fitting이 잘 안되는 현상**
 - 왜냐하면 시그모이드 함수의 특성상 가운데의 꺾이는 부분을 제외하면 양쪽 끝은 기울기가 0이기 때문이다.
 
-![tf_img_5.png](../images/tensorflow/tf_img_5.png)
+![tf_img_5.png](./images/tensorflow/tf_img_5.png)
 
 ### 뉴럴넷에서 답을 회신받는 방법
 - activation 함수
@@ -59,7 +59,7 @@
     - 양수값에서 기울기가 1로 유지 된다. (미분값이 있다. vanishing 현상이 줄어든다.)
     - 시그모이드 함수에서는 가운데 구간을 제외한 모든 구간에서 기울기가 0이다.
 
-![tf_img_6.png](../images/tensorflow/tf_img_6.png)
+![tf_img_6.png](./images/tensorflow/tf_img_6.png)
 
 
 ## model compiled
@@ -72,7 +72,7 @@
 - **mse** : mean square error 오차 제곱의 평균 사용
 - **optimizer** : loss를 어떻게 줄여줄 것인지 방법을 선택
 
-![tf_img_7.png](../images/tensorflow/tf_img_7.png)
+![tf_img_7.png](./images/tensorflow/tf_img_7.png)
 
 ### Gradient Decent
 - 기존 뉴럴넷이 가중치를 최적화하는 방법
@@ -101,9 +101,9 @@
     - 단계마다 최적화가 부정확하지만 결과적으로 최적화가 잘 된다.
     - 데이터의 일부분만 검토한 한 스텝을 나가기때문에 시간이 적게 걸린다.
 
-![tf_img_8.png](../images/tensorflow/tf_img_8.png)
+![tf_img_8.png](./images/tensorflow/tf_img_8.png)
 
-![tf_img_9.png](../images/tensorflow/tf_img_9.png)
+![tf_img_9.png](./images/tensorflow/tf_img_9.png)
 
 ### Optimize
 - loss 함수를 최소화하는 가중치를 찾아가는 과정에 대한 알고리즘
@@ -125,9 +125,9 @@
     - **RMSProp** : 스텝사이즈를 줄이면서 나아가는데 이전의 맥락을 파악하면서 나아가는 방식
 - **일반적으로 Adam을 사용하고, 성능을 개선하기 위해 다른 optimizer들을 실험한다.**
 
-![tf_img_10.png](../images/tensorflow/tf_img_10.png)
+![tf_img_10.png](./images/tensorflow/tf_img_10.png)
 
-![tf_img_11.png](../images/tensorflow/tf_img_11.png)
+![tf_img_11.png](./images/tensorflow/tf_img_11.png)
 
 ## tensorflow로 딥러닝 선형회귀 모델 만들기
 - 텐서플로우를 사용하여 나이와 몸무게를 입력하면 혈중지방 수치를 예측해주는 딥러닝 모델 생성
@@ -184,7 +184,7 @@ array([[  1.,   1.,  84.,  46., 354.],
 temp_df = pd.DataFrame(raw_data, columns=["idx", "temp", "wight", "age", "bloodfat"])
 temp_df.head(4)
 ```
-![tf_basic_1.png](../images/tensorflow/tf_basic_1.png)
+![tf_basic_1.png](./images/tensorflow/tf_basic_1.png)
 
 ## 데이터 확인
 - 특징데이터 : Age, weight, blood fat
@@ -213,7 +213,7 @@ ax.view_init(10, 30)
 plt.show() ;
 ```
 
-![tf_basic_2.png](../images/tensorflow/tf_basic_2.png)
+![tf_basic_2.png](./images/tensorflow/tf_basic_2.png)
 
 
 ## 학습데이터 생성
@@ -281,7 +281,7 @@ model.compile(optimizer='rmsprop', loss='mse')
 model.summary()
 ```
 
-![tf_basic_3.png](../images/tensorflow/tf_basic_3.png)
+![tf_basic_3.png](./images/tensorflow/tf_basic_3.png)
 
 
 ## 모델 학습
@@ -296,7 +296,7 @@ model.summary()
 hist = model.fit(x_data, y_data, epochs=5000)
 ```
 
-![tf_basic_4.png](../images/tensorflow/tf_basic_4.png)
+![tf_basic_4.png](./images/tensorflow/tf_basic_4.png)
 
 ## predict
 - 데이터를 이용해서 모델을 만들고, 학습을 시켰다.
@@ -451,7 +451,7 @@ ax.view_init(10, 15)
 plt.show() ;
 ```
 
-![tf_basic_5.png](../images/tensorflow/tf_basic_5.png)
+![tf_basic_5.png](./images/tensorflow/tf_basic_5.png)
 
 
 ## 선형회귀와 XOR 문제
@@ -496,7 +496,7 @@ model = tf.keras.Sequential([
 ```
 #### 모델의 구조
 
-![tf_basic_5_1.png](../images/tensorflow/tf_basic_5_1.png)
+![tf_basic_5_1.png](./images/tensorflow/tf_basic_5_1.png)
 
 ### 모델 컴파일
 - optimizer : SGD (stochastic graident descent), loss함수의 값을 줄여주기 위한 최적화 방법
@@ -513,7 +513,7 @@ model.compile(optimizer=tf.keras.optimizers.SGD(lr=0.1), loss='mse')
 model.summary()
 ```
 
-![tf_basic_6.png](../images/tensorflow/tf_basic_6.png)
+![tf_basic_6.png](./images/tensorflow/tf_basic_6.png)
 
 ### 모델 학습
 
@@ -521,7 +521,7 @@ model.summary()
 hist = model.fit(X, y, epochs=5000, batch_size=1)
 ```
 
-![tf_basic_7.png](../images/tensorflow/tf_basic_7.png)
+![tf_basic_7.png](./images/tensorflow/tf_basic_7.png)
 
 
 ### 학습결과
@@ -593,7 +593,7 @@ model_2.compile(optimizer=tf.keras.optimizers.SGD(lr=0.1), loss='mse')
 model_2.summary()
 ```
 
-![tf_basic_8.png](../images/tensorflow/tf_basic_8.png)
+![tf_basic_8.png](./images/tensorflow/tf_basic_8.png)
 
 
 - 딥러닝 모델 학습
@@ -602,7 +602,7 @@ model_2.summary()
 hist = model_2.fit(X2, y, epochs=5000, batch_size=1)
 ```
 
-![tf_basic_9.png](../images/tensorflow/tf_basic_9.png)
+![tf_basic_9.png](./images/tensorflow/tf_basic_9.png)
 
 - 예측
 
@@ -632,7 +632,7 @@ plt.ylabel("loss")
 plt.show() ;
 ```
 
-![tf_basic_10.png](../images/tensorflow/tf_basic_10.png)
+![tf_basic_10.png](./images/tensorflow/tf_basic_10.png)
 
 
 ### 학습에서 찾은 가중치
@@ -798,7 +798,7 @@ model_ir = tf.keras.models.Sequential([
 ])
 ```
 
-![tf_img_12.png](../images/tensorflow/tf_img_12.png)
+![tf_img_12.png](./images/tensorflow/tf_img_12.png)
 
 ### 모델 컴파일
 - optimizer 인수를 Adam 방법으로 설정
@@ -814,7 +814,7 @@ model_ir.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['ac
 model_ir.summary()
 ```
 
-![tf_basic_11.png](../images/tensorflow/tf_basic_11.png)
+![tf_basic_11.png](./images/tensorflow/tf_basic_11.png)
 
 ### 모델 학습
 - 100번 학습
@@ -823,7 +823,7 @@ model_ir.summary()
 hist = model_ir.fit(X_train, y_train, epochs=100)
 ```
 
-![tf_basic_12.png](../images/tensorflow/tf_basic_12.png)
+![tf_basic_12.png](./images/tensorflow/tf_basic_12.png)
 
 ### test 데이터에 대한 accuracy
 
@@ -849,7 +849,7 @@ plt.legend()
 plt.show() ;
 ```
 
-![tf_basic_13.png](../images/tensorflow/tf_basic_13.png)
+![tf_basic_13.png](./images/tensorflow/tf_basic_13.png)
 
 
 ## tensorflow 딥러닝 모델 생성 요약
