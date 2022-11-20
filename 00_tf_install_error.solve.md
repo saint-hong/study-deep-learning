@@ -3,7 +3,7 @@
 ### error 발생
 - 텐서 플로우를 설치하고 모듈을 임포트하면 아래와 같은 에러? 가 발생했다.
 
-![tf_kernel_error.png](../images/tf_kernel_error.png)
+![tf_kernel_error.png](./images/tf_kernel_error.png)
 
 - 몇시간 동안 관련 error를 구글링해 본 결과 많은 사람들이 비슷한 문제를 겪고 있었고, 여러가지 solution들이 제시되고 있었다.
 - 이 solution들을 실행해본 결과, 결론적으로 말하면 새로운 가상환경을 만들고 이 가상환경에서 설치하는 방법으로 해결 할 수 있었다. 덕분에 conda 가상환경을 만들고 주피터 노트북에 커널을 연결하고, 가상환경마다 다른 프로그램, 다른 버전들을 설치하고 관리할 수 있게 되었다. 
@@ -87,7 +87,7 @@ conda create -n new_env python=3.7
 ```
 conda info --envs
 ```
-![tf_kernel_error_2.png](../images/tf_kernel_error_2.png)
+![tf_kernel_error_2.png](./images/tf_kernel_error_2.png)
 
 #### 3. 가상환경 활성화 및 비활성화
 - 가상환경을 활성화하고 가상환경 리스트를 확인하면 활성화 된 가상환경에 `*`가 뜬다.
@@ -121,7 +121,7 @@ python -m ipykernel install --user --name new_env --display-name "ml_env"
 - 여기에서 가상환경을 선택하면 해당 가상환경에서 주피터 노트북이 생성된다.
 - 물론 선택한 가상환경의 프로그램들이 실행된다.
 
-![tf_kernel_error_3.png](../images/tf_kernel_error_3.png)
+![tf_kernel_error_3.png](./images/tf_kernel_error_3.png)
 
 #### 7. 커널 연결 해제 (error 해결과 상관없음)
 - 주피터 노트북과 가상환경을 연결 해제한다.
@@ -149,7 +149,7 @@ conda install -c conda-forge autopep8
 #### 11. tensorflow 임포트 성공
 - 버전 확인 : 2.8.0
 
-![tf_kernel_error_4.png](../images/tf_kernel_error_4.png)
+![tf_kernel_error_4.png](./images/tf_kernel_error_4.png)
 
 #### 11. 추가로 설치 해야될 것들
 - 새로운 가상환경이므로 필요한 프로그램들을 재설치 해주어야 한다.
