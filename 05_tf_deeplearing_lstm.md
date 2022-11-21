@@ -12,7 +12,7 @@
     - 오차함수의 도함수가 0인 지점을 찾기 위해 현재 지점의 기울기로부터 다음 위치를 찾는 방법이라고 볼 수 있다.
     - 임의의 초기값을 시작점으로 비용함수의 도함수가 최소가 될 때까지 기울기값을 갱신한다.
 
-![rnn_6.png](../images/rnn/rnn_6.png)
+![rnn_6.png](./images/rnn/rnn_6.png)
 
 ### 1-1. 수식
 - $x_{k+1} = x_k - \mu \bigtriangledown f(x_k) = x_k - \mu g(x_k)$ 
@@ -34,14 +34,14 @@
 
 - 오차함수의 기울기는 모든 error에 대한 도함수의 합
 
-![rnn_7.png](../images/rnn/rnn_7.png)
+![rnn_7.png](./images/rnn/rnn_7.png)
 
 ### 1-3. BPTT
 - back probagation through time
 - chain rule에 의해 각 state의 미분값이 이전 state의 미분값의 합으로 이루어져 있다.
 - 이러한 경우 BPTT를 통해서 미분값들을 여러번 곱하고 더한다.
 
-![rnn_8.png](../images/rnn/rnn_8.png)
+![rnn_8.png](./images/rnn/rnn_8.png)
 
 ###  1-4. Gradient Vanishing Problem
 - sequence가 작은 경우는 bptt 방식의 가중치 계산이 가능하다. 그런데 sequence가 큰 경우 무수히 많은 미분값을 곱해주어야한다.
@@ -49,16 +49,16 @@
 - 즉 가중치값이 기존의 값과 변화가 없게 된다.
     - 학습이 비효율적이게 된다. 
 
-![rnn_9.png](../images/rnn/rnn_9.png)
+![rnn_9.png](./images/rnn/rnn_9.png)
 
 ### 1-5. Gradient Exploding Problem
 - sequence가 큰 데이터의 bptt 방식에서 1보다 큰 미분값을 무수히 많이 곱해주게 되면 결과적으로 가중치값이 기존값에서 크게 변화하게 된다.
 - 학습이 한 곳으로 수렴하지 못하게 된다. 
 
-![rnn_10.png](../images/rnn/rnn_10.png)
+![rnn_10.png](./images/rnn/rnn_10.png)
 
 ## 2. LSTM
-- rnn의 학습과정의 최적화에서 발생하는 gradient vanishing, exploding 문제를 보완한 방법
+- **rnn의 학습과정의 최적화에서 발생하는 gradient vanishing, exploding 문제를 보완한 방법**
 - lstm cell 안에 입력된 정보를 잊는 메카니즘과 기억하는 메카니즘이 수학적으로 구현되어 있다.
     - hidden_state와 memory_cell로 나누어진다.
 - lstm cell 안의 각 과정에 sigmoid 함수가 추가됨
@@ -67,15 +67,15 @@
 
 - 문장을 학습하여 단어마다 형태소를 예측하는 모델이라고 가정
 
-![lstm_1.png](../images/rnn/lstm_1.png)
+![lstm_1.png](./images/rnn/lstm_1.png)
 
 - LSTM cell의 두 개의 state
 
-![lstm_2.png](../images/rnn/lstm_2.png)
+![lstm_2.png](./images/rnn/lstm_2.png)
 
 - cell 내부의 연산과정
 
-![lstm_3.png](../images/rnn/lstm_3.png)
+![lstm_3.png](./images/rnn/lstm_3.png)
 
 ### 2-1. LSTM cell : forget mechanism
 -  lstm cell은 C_t-1(memory_cell)와 h_t-1(hidden_state) 값을 이전 state로 부터 input 받으며 각각 병렬구조로 출력된다. 이 구조에서 서로 혼합된다. 
@@ -85,7 +85,7 @@
     - 즉 이전 state에서 들어온 memory_cell의 값이 sigmoid 함수값과 곱해져서 일부는 잊혀지게 된다.
     - sigmoid 값이 20% 가 나왔다면 이전 meomory_cell 값의 20%만 남겨라는 의미가 된다.
 
-![lstm_4.png](../images/rnn/lstm_4.png)
+![lstm_4.png](./images/rnn/lstm_4.png)
 
 ### 2-2. LSTM cell : input mechanism  
 - 현재 셀의 input값과 이전 cell의 hidden_state값을 sigmoid 함수와 tanh 함수에 각각 넣고 출력값을 만든다.
@@ -94,7 +94,7 @@
     - 이 곱해진 값을 조정된 C_t-1 값과 더해준다. 
     - 과거의 정보에 새로운 정보가 더해지면서 새로운 memory_cell 값이 만들어 진 것과 같다.
     
-![lstm_5.png](../images/rnn/lstm_5.png)
+![lstm_5.png](./images/rnn/lstm_5.png)
 
 ### 2-3. LSTM cell : output mechanism
 - lstm cell도 rnn cell을 기반으로하기 때문에 output 값을 반환하고 hidden_state값을 다음 cell에 넘겨준다. 
@@ -104,7 +104,7 @@
 - 두 개의 값을 곱해준다. 
     - 이 값이 output 값이 되고, 다음 cell에 넘겨줄 hidden_state 값이 된다. 
 
-![lstm_6.png](../images/rnn/lstm_6.png)
+![lstm_6.png](./images/rnn/lstm_6.png)
 
 
 ## 3. TensorFlow LSTM
@@ -186,7 +186,7 @@ plt.legend()
 plt.show() ;
 ```
 
-![rnn_tf_6.png](../images/rnn/rnn_tf_6.png)
+![rnn_tf_6.png](./images/rnn/rnn_tf_6.png)
 
 ### 3-3. LSTM 모델 생성
 
@@ -201,7 +201,7 @@ model_lstm.compile(optimizer='adam', loss="mse")
 model_lstm.summary()
 ```
 
-![lstm_7.png](../images/rnn/lstm_7.png)
+![lstm_7.png](./images/rnn/lstm_7.png)
 
 ### 3-4. 모델 학습
 
@@ -212,7 +212,7 @@ Y = np.array(Y)
 history_lstm = model_lstm.fit(X[:2560], Y[:2560], epochs=100, validation_split=0.2)
 ```
 
-![lstm_8.png](../images/rnn/lstm_8.png)
+![lstm_8.png](./images/rnn/lstm_8.png)
 
 ### 3-5. 학습 결과
 - loss, val_loss 값이 거의 일치한다.
@@ -254,7 +254,7 @@ print()
 print(train_text[:300])
 ```
 
-![lstm_9.png](../images/rnn/lstm_9.png)
+![lstm_9.png](./images/rnn/lstm_9.png)
 
 
 #### 데이터에 불필요한 값들이 많음
@@ -263,7 +263,7 @@ print(train_text[:300])
 train_text[:300]
 ```
 
-![lstm_10.png](../images/rnn/lstm_10.png)
+![lstm_10.png](./images/rnn/lstm_10.png)
 
 #### 데이터 줄 바꿈으로 확인
 - 탭 입력 뒤에 라벨 데이터가 보인다.
@@ -273,7 +273,7 @@ train_text[:300]
 train_text.split("\n")
 ```
 
-![lstm_11.png](../images/rnn/lstm_11.png)
+![lstm_11.png](./images/rnn/lstm_11.png)
 
 #### 라벨 데이터로 사용할 text 데이터
 - 데이터의 마지막에 0, 1이 붙어있다.
@@ -355,7 +355,7 @@ for i in range(5) :
     print(sentences[i])
 ```
 
-![lstm_11.png](../images/rnn/lstm_11.png)
+![lstm_11.png](./images/rnn/lstm_11.png)
 
 ### 4-5. 데이터 크기 맞추기
 - 학습을 위해 네트워크에 입력 데이터의 크기를 같게 해준다.
@@ -377,7 +377,7 @@ print(sum([int(l <= 25) for l in sentence_len]))
 144646
 ```
 
-![lstm_12.png](../images/rnn/lstm_12.png)
+![lstm_12.png](./images/rnn/lstm_12.png)
 
 #### 말뭉치 길이를 5개로 균일하게 만들기
 - 전처리 하기 전
@@ -426,9 +426,9 @@ for i in range(5) :
 ['사이몬페그', '익살스런', '연기가', '돋보였던', '영화!스파', '늙어보이기', '했던', '커스틴', '던스트가', '너무나도', '이뻐보였다']
 ```
 
-### 4- 토크나이징과 패딩
-- padding : 빈공간에 0을 채우는 방식
-    - 어떤 기능인지 확인 할 것
+### 4-6. 토크나이징과 패딩
+- `padding` : 빈공간에 0을 채우는 방식
+    - 어떤 기능인지 다시 확인 할 것
 
 ```python
 from tensorflow.keras.preprocessing.text import Tokenizer
@@ -461,7 +461,7 @@ print(train_X[:5])
 ```
 
 ### 4-7. 자연어 분석을 위한 딥러닝 모델 생성
-- **Embedding layer** : 자연어를 수치화된 정보로 바꾸기 위한 레이어
+- `Embedding layer` : 자연어를 수치화된 정보로 바꾸기 위한 레이어
 - 자연어는 기본적으로 시간의 흐름에 따른 연속 정보인 **시퀀스 데이터**와 같다.
 - 영어는 문자 단위, 한글은 문자를 넘어 자소 단위로 쪼개기도 한다. 
     - 혹은 띄어쓰기나 형태소로 나누기도 한다.
@@ -479,7 +479,7 @@ model_nltk.compile(optimizer="adam", loss="sparse_categorical_crossentropy",
 model_nltk.summary()
 ```
 
-![lstm_14.png](../imgaes/rnn/lstm_14.png)
+![lstm_14.png](./imgaes/rnn/lstm_14.png)
 
 ### 4-8. 모델 학습
 
@@ -494,7 +494,7 @@ hist_nl = model_nl.fit(train_X, train_Y, epochs=5, batch_size=128,
 print("Fit time : {}".format(time.time() - start))
 ```
 
-![lstm_15.png](../imgaes/rnn/lstm_15.png)
+![lstm_15.png](./imgaes/rnn/lstm_15.png)
 
 
 ### 4-9. 학습 결과
@@ -540,7 +540,7 @@ c = "재미있을 줄 알았는데 완전 실망했어. 너무 졸려, 돈도 �
 lstm_sentiment_pred(c)
 ```
 
-![lstm_16.png](../images/rnn/lstm_16.png)
+![lstm_16.png](./images/rnn/lstm_16.png)
 
 #### 문장 2에 대한 감성 분석
 - 긍정적인 견해와 부정적인 견해가 섞여 있는 문장
@@ -553,7 +553,7 @@ c = "어제 여자친구랑 봤는데 여자친구는 재밌었다는데 나는 
 lstm_sentiment_pred(c)
 ```
 
-![lstm_17.png](../images/rnn/lstm_17.png)
+![lstm_17.png](./images/rnn/lstm_17.png)
 
 #### 문장 3에 대한 감성 분석
 - [0.9985837  0.00141639] : 0에 대한 확률값이 더 크다.
@@ -563,7 +563,7 @@ c = "배우, 조연 다 좋은데 영화는 별로네"
 lstm_sentiment_pred(c)
 ```
 
-![lstm_18.png](../images/rnn/lstm_18.png)
+![lstm_18.png](./images/rnn/lstm_18.png)
 
 #### 문장 4에 대한 감성 분석
 - [0.23842187 0.76157814] : 1에 대한 확률값이 더 크다.
@@ -574,7 +574,7 @@ c = "이게 영화인가 싶었는데 나름 볼만했어"
 lstm_sentiment_pred(c)
 ```
 
-![lstm_19.png](../images/rnn/lstm_19.png)
+![lstm_19.png](./images/rnn/lstm_19.png)
 
 ### 참고
 - https://www.youtube.com/watch?v=bX6GLbpw-A4&t=2s
