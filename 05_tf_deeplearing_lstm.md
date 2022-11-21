@@ -479,7 +479,7 @@ model_nltk.compile(optimizer="adam", loss="sparse_categorical_crossentropy",
 model_nltk.summary()
 ```
 
-![lstm_14.png](./imgaes/rnn/lstm_14.png)
+![lstm_14.png](./images/rnn/lstm_14.png)
 
 ### 4-8. 모델 학습
 
@@ -494,7 +494,7 @@ hist_nl = model_nl.fit(train_X, train_Y, epochs=5, batch_size=128,
 print("Fit time : {}".format(time.time() - start))
 ```
 
-![lstm_15.png](./imgaes/rnn/lstm_15.png)
+![lstm_15.png](./images/rnn/lstm_15.png)
 
 
 ### 4-9. 학습 결과
