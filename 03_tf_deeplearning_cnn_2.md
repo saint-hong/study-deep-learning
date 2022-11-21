@@ -16,7 +16,7 @@ path = "../../04_machine_learning/train/train"
 
 os.listdir(path)
 ```
-![cnn_dogcats_2.png](./images/cnn_dogcats_2.png)
+![cnn_dogcats_2.png](./images/cnn/cnn_dogcats_2.png)
 
 #### 데이터 확인
 
@@ -24,7 +24,7 @@ os.listdir(path)
 full_names = os.listdir(path)
 full_names
 ```
-![cnn_dogcats_2.png](./images/cnn_dogcats_2.png)
+![cnn_dogcats_2.png](./images/cnn/cnn_dogcats_2.png)
 
 #### 데이터의 길이
 
