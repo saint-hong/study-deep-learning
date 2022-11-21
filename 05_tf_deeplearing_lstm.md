@@ -1,5 +1,5 @@
 # LSTM
-- Long Short Term Memory : RNN 순환신경망을 응용
+- **Long Short Term Memory** : RNN 순환신경망을 응용
 - simple rnn의 장기 의존성 문제를 보완하는 알고리즘
     - long term dependency : 장기 의존성
     - 입력데이터의 길이가 길어지면 학습 능력이 떨어진다.
