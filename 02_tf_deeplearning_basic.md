@@ -62,7 +62,7 @@ x_test.shape
 - 분류 문제의 경우(라벨 데이터가 카테고리 값) 딥러닝 모델에서 마지막 layer의 활성함수로 사용된다.
     - 예측값으로 카데고리 별 확률값을 반환해준다. 가장 값이 큰 카테고리가 예측값이다. 
 
-![tf_mnist_1.png](../images/tensorflow/tf_mnist_1.png)
+![tf_mnist_1.png](./images/tensorflow/tf_mnist_1.png)
 
 #### 소프트맥스 함수
 - `소프트맥스 함수 softmax` : 다변수 다출력 함수
@@ -80,7 +80,7 @@ x_test.shape
 - 다중 카테고리 분류에서의 소프트맥스 함수의 기능
     - 여러개의 카데고리에 대해서 확률값을 반환해준다. 
 
-![tf_mnist_1.png](../images/tensorflow/tf_mnist_1.png)
+![tf_mnist_1.png](./images/tensorflow/tf_mnist_1.png)
 
 
 ```python
@@ -109,7 +109,7 @@ model.compile(optimizer='adam',
 model.summary()	     
 ```
 
-![tf_mnist_3.png](../images/tensorflow/tf_mnist_3.png)
+![tf_mnist_3.png](./images/tensorflow/tf_mnist_3.png)
 
 
 ### 1-6. 모델학습
@@ -146,7 +146,7 @@ hist = model.fit(x_train, y_train, validation_data=(x_test, y_test),
 print("Fit time : ", time.time() - start_time)
 ```
 
-![tf_mnist_4.png](../images/tensorflow/tf_mnist_4.png)
+![tf_mnist_4.png](./images/tensorflow/tf_mnist_4.png)
 
 
 ### 1-7. 학습 결과
@@ -165,7 +165,7 @@ plt.grid()
 plt.show() ;
 ```
 
-![tf_mnist_5.png](../images/tensorflow/tf_mnist_5.png)
+![tf_mnist_5.png](./images/tensorflow/tf_mnist_5.png)
 
 ### 1-8. 모델의 성능 평가
 - evaluate() : 함수는 loss와 accuracy 값을 반환해준다.
@@ -199,7 +199,7 @@ hist2 = model.fit(x_train, y_train, validation_data=(x_test, y_test),
 print("Fit time : ", time.time() - start_time)
 ```
 
-![tf_mnist_6.png](../images/tensorflow/tf_mnist_6.png)
+![tf_mnist_6.png](./images/tensorflow/tf_mnist_6.png)
 
 - 학습 결과 확인
 
@@ -216,7 +216,7 @@ plt.grid()
 plt.show() ;
 ```
 
-![tf_mnist_7.png](../images/tensorflow/tf_mnist_7.png)
+![tf_mnist_7.png](./images/tensorflow/tf_mnist_7.png)
 
 - 모델 성능 평가
 - 전체 이미지 중에서 98%는 예측값과 정답이 일치 했고, 2% 정도는 예측이 틀렸다. 
@@ -325,7 +325,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![tf_mnist_8.png](../images/tensorflow/tf_mnist_8.png)
+![tf_mnist_8.png](./images/tensorflow/tf_mnist_8.png)
 
 ## 2. mnist fashion image data
 - fashion 데이터 이미지를 사용하여 예측 모델 만들기
@@ -420,7 +420,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![tf_mnist_9.png](../images/tensorflow/tf_mnist_9.png)
+![tf_mnist_9.png](./images/tensorflow/tf_mnist_9.png)
 
 
 ### 2-3. 딥러닝 모델 생성
@@ -440,7 +440,7 @@ model_f.compile(optimizer='adam',
 model_f.summary()	       
 ```
 
-![tf_mnist_10.png](../images/tensorflow/tf_mnist_10.png)
+![tf_mnist_10.png](./images/tensorflow/tf_mnist_10.png)
 
 ### 2-4. 모델 학습
 
@@ -455,7 +455,7 @@ hist_f = model_f.fit(X_train, y_train, validation_data=(X_test, y_test),
 print("Fit time : ", time.time() - start_time)
 ```
 
-![tf_mnist_11.png](../images/tensorflow/tf_mnist_11.png)
+![tf_mnist_11.png](./images/tensorflow/tf_mnist_11.png)
 
 ### 2-5. 학습 결과
 
@@ -470,7 +470,7 @@ plt.legend()
 plt.show() ;
 ```
 
-![tf_mnist_12.png](../images/tensorflow/tf_mnist_12.png)
+![tf_mnist_12.png](./images/tensorflow/tf_mnist_12.png)
 
 
 ### 2-6. 모델 성능 평가
@@ -575,5 +575,5 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![tf_mnist_13.png](../images/tensorflow/tf_mnist_13.png)
+![tf_mnist_13.png](./images/tensorflow/tf_mnist_13.png)
 
