@@ -8,7 +8,7 @@
     - "i work at google" 에서 google을 판단할 때, i=대명사, work=동사, at=전치사를 추론한 각각의 값을 **이어 받아서**  명사라고 추론하는 구조이다.
     - 문자의 순서가 바뀌어도 그 자리에 오는 단어에 대해서 같은 형태소로 추론 해준다. 
 
-![rnn_1.png](../images/rnn/rnn_1.png)
+![rnn_1.png](./images/rnn/rnn_1.png)
 
 
 ### 1-1. 딥러닝 모델 구조 
@@ -43,14 +43,14 @@
     - 각 y_i에 대한 품사의 종률를 확률값으로 반환해준다.
     - **supervised learning model** : 학습 데이터에 정답값이 주어진 모델
 
-![rnn_2.png](../images/rnn/rnn_2.png)
+![rnn_2.png](./images/rnn/rnn_2.png)
 
 - `예측 prediction`
     - **logit** : softmax 함수의 input값
         - 각 sell의 결과값
     - **prediction** : softmax 함수의 output값
 
-![rnn_3.png](../images/rnn/rnn_3.png)
+![rnn_3.png](./images/rnn/rnn_3.png)
 
 ### 1-2. 모델의 학습
 - 정답(target)과 예측값(pred)을 비교하여 이 둘의 차이를 줄여나가는 과정
@@ -65,7 +65,7 @@
     - 각 셀마다 W_xh, W_hh, b가 있지만 모델 구조상 각각 하나의 변수들이 변형된 것과 같다.
     - 하나의 변수를 변형하는 과정이므로 back propagation 이 아닌 **back propagation through time**이라고 부른다. 
     
-![rnn_4.png](../images/rnn/rnn_4.png)
+![rnn_4.png](./images/rnn/rnn_4.png)
 
 ## 2. Sentiment Analysis
 - 문장의 감정을 수치화한 분석
@@ -85,7 +85,7 @@
     - 이전 state의 값 h_t-1과 가중치 W_hh의 곱
     - 편향치 b 를 모두 더해준다.
 
-![rnn_5.png](../images/rnn/rnn_5.png)
+![rnn_5.png](./images/rnn/rnn_5.png)
 
 
 ### 참고
@@ -166,7 +166,7 @@ model.compile(optimizer="adam", loss="mse", metrics="accuracy")
 model.summary()
 ```
 
-![rnn_tf_1.png](../images/rnn/rnn_tf_1.png)
+![rnn_tf_1.png](./images/rnn/rnn_tf_1.png)
 
 ### 4. 모델 학습
 
@@ -175,7 +175,7 @@ hist_sr = model.fit(X, Y, epochs=100, verbose=1)
 hist_sr
 ```
 
-![rnn_tf_2.png](../images/rnn/rnn_tf_2.png)
+![rnn_tf_2.png](./images/rnn/rnn_tf_2.png)
 
 ### 5. 학습 결과
 - 작은 길이의 데이터에서는 정확도가 높은 편이다.
@@ -193,7 +193,7 @@ plt.legend()
 plt.show() ; 	
 ```
 
-![rnn_tf_3.png](../images/rnn/rnn_tf_3.png)
+![rnn_tf_3.png](./images/rnn/rnn_tf_3.png)
 
 ### 6. 예측
 - Y는 (i+4) / 10 이므로, 6 + 4 / 10 = 1
@@ -288,7 +288,7 @@ model.compile(optimizer="adam", loss="mse")
 model.summary()
 ```
 
-![rnn_tf_4.png](../images/rnn/rnn_tf_4.png)
+![rnn_tf_4.png](./images/rnn/rnn_tf_4.png)
 
 
 ### 3. 모델 학습
@@ -300,7 +300,7 @@ Y = np.array(Y)
 history = model.fit(X[:2560], Y[:2560], epochs=100, validation_split=0.2)
 ```
 
-![rnn_tf_5.png](../images/rnn/rnn_tf_5.png)
+![rnn_tf_5.png](./images/rnn/rnn_tf_5.png)
 
 
 ### 4. 학습 결과
@@ -318,8 +318,5 @@ plt.legend()
 plt.show() ;
 ```
 
-![rnn_tf_6.png](../images/rnn/rnn_tf_6.png)
-
-#### RNN 모델의 문제를 보완한 모델이 LSTM 이다. 
-
+![rnn_tf_6.png](./images/rnn/rnn_tf_6.png)
 
