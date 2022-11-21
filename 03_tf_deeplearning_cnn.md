@@ -6,7 +6,7 @@
     - 특징검출 단계 : layer(컨볼루션 + Relu) -> layer(풀링) -> ... 반복
     - 분류 단계 : 풀링 -> 평면화 -> softmax -> 예측값(조건부확률)
 
-![cnn_1.png](../images/cnn/cnn_1.png)
+![cnn_1.png](./images/cnn/cnn_1.png)
 
 ## 1. CNN 구조
 - Img Input
@@ -15,7 +15,7 @@
     - Neural Network : 분류결과 반환
 - Clf
 
-![cnn_2.png](../images/cnn/cnn_2.png)
+![cnn_2.png](./images/cnn/cnn_2.png)
 
 ## 2. Convolutional Filter
 - 어떤 행렬에서 특정 크기의 배열을 순차적으로 이동하며 값을 계산하는 방식
@@ -24,7 +24,7 @@
 - img에서 각 픽셀에 해당하는 값들을 conv window가 지나가면서 특정한 계산을 하여 규칙적인 값을 재배열 시킨다.
     - 이미지 변환이 일어난다. **원래 이미지에서 어떤 특징을 찾아낸다.**
 
-![cnn_3.png](../images/cnn/cnn_3.png)
+![cnn_3.png](./images/cnn/cnn_3.png)
 
 ### 동작 방식
 - convolution : 특정 패턴이 있는지 conv window로 훑으면서 마킹한다.
@@ -32,7 +32,7 @@
 - conv window로 훓고 지나갈때마다 숫자를 반환한다.
 - 이 값을 activation func(활성함수 : 주로 ReLu)에 넣어서 나온 결과값으로 이미지를 새로 만든다.        
 
-![cnn_4.png](../images/cnn/cnn_4.png)
+![cnn_4.png](./images/cnn/cnn_4.png)
 
 ## 3. Pooling
 - 이미지의 형태를 확인하기 위해 이미지를 축소하여 멀리서 보는 기능을 하는 방법
@@ -42,7 +42,7 @@
     - 더 멀리 떨어져서 이미지를 보면 어떤 물체인지 알 수 있다.
 - 이렇게 멀리 떨어져서 보는 방식을 이미지를 축소하여 전체 형태를 확인할 수 있게 해준다. 
 
-![cnn_5.png](../images/cnn/cnn_5.png)
+![cnn_5.png](./images/cnn/cnn_5.png)
 
 ### MaxPooling
 - 행렬의 어떤 부분을(Pool) 중요한 정보 한개(Max)로 줄이는 방식
@@ -55,13 +55,13 @@
 - **보통 2X2 행렬을 이동하면서 큰 값을 찾아낸다.**
 - max pooling을 하고 나면 이미지의 크기가 절반으로 줄어든다.
 
-![cnn_6.png](../images/cnn/cnn_6.png)
+![cnn_6.png](./images/cnn/cnn_6.png)
 
 #### 큰 값 찾기 
 - 4x4 행렬에서 2x2 크기 단위로 구분하여 각 단위에서 가장 큰 값만 반환한다.
     - 행렬의 크기가 작아지지만 다른 의미에서 특징이 뚜렷한 값만 남는다.
 
-![cnn_7.png](../images/cnn/cnn_7.png)
+![cnn_7.png](./images/cnn/cnn_7.png)
 
 ## 4. Conv Layer
 - Conv Window와 MaxPooling 이 여러개 나열되어 있다. 
@@ -74,18 +74,18 @@
 - Conv Layer를 지나고 마지막 맥스풀링을 한 이미지가 neural network를 거쳐 학습을 하게 된다.
 - Conv Layer는 neural network의 학습 효과를 증진시키기 위한 이미지 처리 과정과 같다.
 
-![cnn_8.png](../images/cnn/cnn_8.png)
+![cnn_8.png](./images/cnn/cnn_8.png)
 
 ### Zero padding
 - Conv Window 즉 **kernel_size**에 의해 이미지의 모서리와 모서리를 잇는 선에서는 이미지 바깥이 빈공간이 된다. 이미지 사이즈 유지를 위해 Conv 하기 전에 이미지 모서리와 모든 변의 바깥을 0으로 채워주는 것을 의미한다.
 
-![cnn_9.png](../images/cnn/cnn_9.png)
+![cnn_9.png](./images/cnn/cnn_9.png)
 
 ### dropout
 - 특정한 이미지를 학습시키면 overfitting이 발생하여, 유사한 이미지라도 예측성능이 떨어지게 된다.
     - "귀가 뾰족한" "검은 고양이"를 학습시키면, 뚱뚱하거나 갈색이거나 귀가 쳐진 고양이는 예측하지 못한다.
 
-![cnn_10.png](../images/cnn/cnn_10.png)
+![cnn_10.png](./images/cnn/cnn_10.png)
 
 - 이러한 overfitting 문제를 줄이기 위해서 학습을 시킬 떄 **일부러 정보를 누락시키거나 중간중간 노드를 끈다.**
     - 즉 이미지에서 어떤 특징을 지운 나머지 특징만으로 학습을 반복하여, 해당 특징의 중요도를 상쇄시켜준다.
@@ -94,7 +94,7 @@
     - 고양이의 귀를 지우고 학습 (뉴럴넷의 특정 노드를 끈다.)
 - dropout 기능은 학습에 응용력을 주는 것과 같다. 
 
-![cnn_11.png](../images/cnn/cnn_11.png)
+![cnn_11.png](./images/cnn/cnn_11.png)
 
 ## tensorflow 
 
@@ -159,7 +159,7 @@ model = models.Sequential([
 
 ])
 ```
-![cnn_12.png](../images/cnn/cnn_12.png)
+![cnn_12.png](./images/cnn/cnn_12.png)
 
 #### 생성한 cnn 모델 요약 정보 확인
 - 컨볼루션 레이어와 맥스 풀링 레이어를 거치면서 채널의 수가 늘어나 변수의 수가 크게 늘어난다.
@@ -168,7 +168,7 @@ model = models.Sequential([
 model.summary()
 ```
 
-![cnn_13.png](../images/cnn/cnn_13.png)
+![cnn_13.png](./images/cnn/cnn_13.png)
 
 ### 4. 모델 학습
 - 시간 꽤 걸린다. 5분정도
@@ -188,7 +188,7 @@ hist = model.fit(X_train, y_train, validation_data=(X_test, y_test),
 print("fit time : {}".format(time.time() - s_time))
 ```
 
-![cnn_14.png](../images/cnn/cnn_14.png)
+![cnn_14.png](./images/cnn/cnn_14.png)
 
 ### 5. 학습 결과
 - 단순히 뉴럴넷 모델을 사용했을 때보다 성능이 더 좋다.
@@ -210,7 +210,7 @@ plt.grid()
 plt.show() ;
 ```
 
-![cnn_15.png](../images/cnn/cnn_15.png)
+![cnn_15.png](./images/cnn/cnn_15.png)
 
 
 ### 6. 모델 성능 확인
@@ -341,7 +341,7 @@ plt.tight_layout()
 plt.show() ;
 ```
 
-![cnn_16.png](../images/cnn/cnn_16.png)
+![cnn_16.png](./images/cnn/cnn_16.png)
 
 ## CNN 모델로 fashion image 데이터 분류
 - 위에서 만든 모델로 fashion image 데이터를 분류하기
@@ -377,7 +377,7 @@ hist_f = model.fit(X_train, y_train, validation_data=(X_test, y_test),
 print("Fit time : {}".format(time.time() - s_time))
 ```
 
-![cnn_17.png](../images/cnn/cnn_17.png)
+![cnn_17.png](./images/cnn/cnn_17.png)
 
 
 ### 3. 학습 결과
@@ -396,7 +396,7 @@ plt.grid()
 plt.show() ;
 ```
 
-![cnn_18.png](../images/cnn/cnn_18.png)
+![cnn_18.png](./images/cnn/cnn_18.png)
 
 ### 4. 성능 평가
 - 단수 뉴럴넷 모델에서보다 성능이 향상 됐다.
@@ -441,5 +441,5 @@ plt.grid()
 plt.show() ;
 ```
 
-![cnn_19.png](../images/cnn/cnn_19.png)
+![cnn_19.png](./images/cnn/cnn_19.png)
 
