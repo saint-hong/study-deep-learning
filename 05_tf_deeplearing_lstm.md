@@ -19,7 +19,7 @@
     - \mu : 스텝사이즈, learning rate 학습률
     - \bigtriangledown f(x_k) : 그레디언트 벡터 : 도함수로 이루어진 벡터
 - rnn 모델에서의 수식
-    - $W_{k+1} = W_{k} - \text{learning_rate} \cdot \dfrac{\partial E}{\partial W}$
+    - $W_{k+1} = W_{k} - \text{learning rate} \cdot \dfrac{\partial E}{\partial w}$
     - W_{k+1} : 현재 가중치
     - W_k : 이전 가중치
     - E : error
